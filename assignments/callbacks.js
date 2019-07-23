@@ -26,20 +26,20 @@
 
 const items = ['Pencil', 'Notebook', 'yo-yo', 'Gum'];
 
+// getLength passes the length of the array into the callback.
 function getLength(arr, cb) {
-  // getLength passes the length of the array into the callback.
   return cb(items.length);
 }
 
-getLength(items, length => {
+getLength(items, (length) => {
   console.log(length);
 });
 
 
 /***********************     */
+// last passes the last item of the array into the callback.
 function last(arr, cb) {
-  // last passes the last item of the array into the callback.
-  return cb(items[items.length - 1]);
+  return cb(items[items.length -1]);
 }
 
 last(items, (last) => {
@@ -47,21 +47,22 @@ last(items, (last) => {
 });
 
 /***********************     */
-function sumNums(x, y, cb) {
-  // sumNums adds two numbers (x, y) and passes the result to the callback. 
-  let sumNums = x + y;
-  console.log(sumNums);
+// sumNums adds two numbers (x, y) and passes the result to the callback. 
+function sumNums(x, y, cb) { 
+  const add = x + y;
+  return cb(add);
 }
 
-sumNums(40, 60, (nums) => {
-  console.log(Nums)
+sumNums(40, 600, (add) => {
+  console.log(add)
 });
 
+
 /***********************     */
+// multiplyNums multiplies two numbers and passes the result to the callback.
 function multiplyNums(x, y, cb) {
-  // multiplyNums multiplies two numbers and passes the result to the callback.
-  let multiplyNums = x * y;
-  console.log(multiplyNums);
+  const multiply = x * y;
+  console.log(multiply);
 }
 
 multiplyNums(20, 40, (multiply) => {
@@ -69,20 +70,22 @@ multiplyNums(20, 40, (multiply) => {
 });
 
 /***********************     */
-const list = [{id:"item-1"}, {id:"item-2"}, {id:"item-3"} ];
-function contains(item, list, cb) {
-  // contains checks if an item is present inside of the given array/list.
+// A function that checks if something is in an array (results in a boolean)
+
+// contains checks if an item is present inside of the given array/list.
   // Pass true to the callback if it is, otherwise pass false.
-  const conatins = list.forEach(item => {
-    if(list.id === "item"){console.log(true)};
-     return 'none';
-  });
 
-  contains(item, list, check => {
-    console.log(check);
-  });
+const nums = [1, 2, 3, 4, 5];
 
-  
+const contains = (item, list, cb) => {
+  return cb(item.some((listItem) => list === listItem));
+}   
+
+contains(nums, nums.length, (cb) => {
+  console.log(cb);
+});
+
+
 
 /* STRETCH PROBLEM */
 
@@ -90,4 +93,8 @@ function contains(item, list, cb) {
 // removeDuplicates removes all duplicate values from the given array.
   // Pass the duplicate free array to the callback function.
   // Do not mutate the original array.
-}//
+const arr = ['😀', '😀', '😃', 1, 1, 3, 3];
+
+const newArray = arr.filter((item, index) => arr.indexOf(item) !== index);
+
+console.log(newArray);
